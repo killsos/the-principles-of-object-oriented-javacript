@@ -2,7 +2,7 @@ The Principles of object-oriented javascript
 
 javascript 面向对象精要
 
-1 原始类型与引用类型
+  原始类型与引用类型
 
   JavaScript类型分为原始类型和引用类型
   原始类型保存简单数据值
@@ -183,13 +183,31 @@ javascript 面向对象精要
   [[Extensible]]是一个布尔值,指明该对象本身是否可以被修改
   禁止扩展
   Object.preventExtensions()  不能再给添加新属性
-
   Object.isExtensible()       检查是否设置禁止扩展
 
   对象封印
-  一个被封印的对象是不可扩展的其所有属性都不可配置
+  一个被封印的对象是不可扩展的其所有属性   都不可配置  只能读写属性
   Object.seal() 来封印一个对象
+  Object.isSealed()
   给[[Extensible]]设为false  [[Configurable]]设false
 
   对象冻结
-  
+  一个对象被冻结则不能添加删除属性 不能改变属性的类型  也不能写入任何数据属性
+  被冻结对象是一个数据属性都为只读的被封印冻结,被冻结对象无法解冻
+  冻结对象之后[[Extensible]]设为false  [[Conftigurable]]设false
+  同时isSealed是true  isFrozen是true
+
+  Object.freeze()
+
+  Object.isFrozen()
+
+                    添加属性   删除属性   配置   写入数据    读取数据
+
+  Extensible          no        yes     yes   yes       yes
+
+  seal                no        no      no    yes       yes
+
+  freeze              no        no      no    no        yes
+
+
+  构造函数和原型对象

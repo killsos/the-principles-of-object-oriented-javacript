@@ -217,4 +217,73 @@ javascript 面向对象精要
   还是建议用instanceof来检查对象类型 因为构造函数属性可以被覆盖,并不一定会完全准确
   03.js
 
-  
+  原型对象
+  可以把原型对象看作是对象的基类
+  几乎所有的函数(除了一些内建函数)都有一个名为prototype属性 04.js
+  该属性是一个原型对象用来创建新来的对象实例
+  所有创建的对象实例共享该原型对象
+  并且这些对象实例可以访问原型对象的属性
+
+  判断原型属性05.js
+
+
+  [[prototype]]属性
+  一个对象实例通过内部属性[[prototype]]跟踪其原型对象,该属性是一个指向该实例使用的
+  原型对象的指针。
+  当使用new创建一个新的对象时,构造函数的原型对象会被赋给该对象[[prototype]]属性
+
+  Object.getPrototypeOf()  读取[[prototype]]属性的值
+
+  大部分javascript引擎在所有对象上都支持一个名为__proto__的属性
+  该属性使你可以直接读取[[prototype]]属性
+
+  isPrototypeOf() 检查一个对象是否另一个对象的原型对象 06.js
+
+
+  继承
+  javascript内建继承方法被称为原型链继承
+
+  Object.prototype
+
+  hasOwnProperty()
+  propertyIsEnumberable()
+  isPrototypeOf()
+
+
+
+  valueOf()-------返回一个对象的值表达式
+  每当一个操作符被用于一个对象时就就会调用valueOf()方法
+  valueOf()默认返回对象实例本身
+
+
+  toString()------返回一个对象的字符串的表达式
+  一旦valueOf()返回的是一个引用而不是原始值的时候，就会回退调用toString()
+  另外当javascript期望一个字符串时也会对原始值隐式调用toString()
+
+
+  对象继承
+  Object.create(继承的原型,{})
+
+  模块方式
+
+  var youobject = (function(){
+    // private data variables
+
+    return {
+      // public methods and properties
+    }
+
+  }())
+
+
+  作用域安全的构造函数
+  当用new调用一个函数时,this指向的新创建的对象已经属于该构造函数所代表的自定义类型
+  可以在函数内用instanceof来检查自己是否被new调用
+
+  instanceof 运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性
+
+  object instanceof constructor
+
+  new ---工作原理
+
+  this = Object.create(FN.prototype,{});

@@ -27,3 +27,44 @@ javascript 面向对象精要
 
   javascript中函数其实是引用值,除了函数可以运行以外,一个包含数组的属性和一个函数的属性
   没有区别
+
+  创建对象
+  var obj = new Object();
+
+  根据命名规范:构造函数用首字母大写来跟非构造函数进行区分
+
+  obj变量实际上并不包含对象的实例,而是一个指向内存中实际对象所在位置的指针(引用)
+
+  当你讲一个对象赋值给变量时,实际是赋值给这个变量的指针,这意味着将一个变量赋值给另一个变量时
+  两个变量各获得了一份指针的拷贝,指向内存中的同一个对象
+
+  对象引用解除
+  obj = null;
+
+  javascript内建类型实例化
+  Array
+  Date
+  Error
+  Function
+  Object
+  RegExp
+
+  ES5
+  Array.isArray()
+
+
+  javascript中原始封装类型string number boolean
+
+  var name = “this is javascript”;
+  var firstChar = name.chatAt(0);
+
+  原理：
+  var name = “this is javascript”;
+  var temp = new String(name);
+  var firstChar = temp.chatAt(0);
+  temp = null;
+
+  临时对象仅在值被读取时被创建
+
+  函数
+  
